@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.0-preview2</Version>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl />
+    <Company>GOSTechnology</Company>
+    <Authors>GabrielMotakiru</Authors>
+    <Description>Redis connection management provider.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/gabrielmotakiru/GOSTechnology.Providers.RedisProvider.LIB</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/gabrielmotakiru/GOSTechnology.Providers.RedisProvider.LIB</PackageProjectUrl>
+    <RepositoryType>MIT License</RepositoryType>
+    <PackageReleaseNotes>1.0.0-preview1: Version preview 1.</PackageReleaseNotes>
+    <Copyright>MIT License</Copyright>
+    <PackageTags>RedisProvider</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.16" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.16" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>
