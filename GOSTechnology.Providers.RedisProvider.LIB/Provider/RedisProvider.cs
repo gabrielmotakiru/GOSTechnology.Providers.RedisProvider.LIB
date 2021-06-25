@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
@@ -17,11 +16,6 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
         private IDatabase _redis;
 
         /// <summary>
-        /// _configuration.
-        /// </summary>
-        private readonly IConfiguration _configuration;
-
-        /// <summary>
         /// _logger.
         /// </summary>
         private readonly ILogger<RedisProvider> _logger;
@@ -35,9 +29,8 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
         /// RedisProvider.
         /// </summary>
         /// <param name="configuration"></param>
-        public RedisProvider(IConfiguration configuration, ILogger<RedisProvider> logger)
+        public RedisProvider(ILogger<RedisProvider> logger)
         {
-            this._configuration = configuration;
             this._logger = logger;
         }
 
@@ -47,24 +40,14 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
         private void OpenConnection()
         {
             try
-            { 
-                String host = this._configuration.GetSection(ConstantsRedisProvider.REDIS_HOST).Value;
-                String password = this._configuration.GetSection(ConstantsRedisProvider.REDIS_PASSWORD).Value;
-                Int32.TryParse(this._configuration.GetSection(ConstantsRedisProvider.REDIS_CONNECTION_TIMEOUT).Value, out Int32 timeout);
-                Int32.TryParse(this._configuration.GetSection(ConstantsRedisProvider.REDIS_PORT).Value, out Int32 port);
-
-                ConfigurationOptions options = new ConfigurationOptions
-                {
-                    EndPoints = { { host, port } },
-                    Password = password,
-                    ConnectTimeout = timeout
-                };
-
+            {
+                ConfigurationOptions options = InfrastructureExtension.GetConfigurationOptions();
                 this._connectionMultiplexer = ConnectionMultiplexer.Connect(options);
                 this._redis = this._connectionMultiplexer.GetDatabase(0);
             }
             catch (Exception ex)
             {
+                this._logger.LogError(ConstantsRedisProvider.MSG_REQUIRED_CONNECTION_STRING);
                 this._logger.LogError(ex?.ToString());
             }
         }
@@ -98,8 +81,8 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
 
                     if (this._redis != null)
                     {
-                        Int32.TryParse(this._configuration.GetSection(ConstantsRedisProvider.REDIS_TIME_CACHE_SECONDS).Value, out Int32 timeCacheSeconds);
-                        this._redis.StringSetAsync($"{key}", JsonConvert.SerializeObject(obj), TimeSpan.FromSeconds(timeCacheSeconds)).GetAwaiter().GetResult();
+                        var timeCacheSeconds = InfrastructureExtension.GetTimeCacheSecods();
+                        this._redis.StringSetAsync($"{key}", JsonConvert.SerializeObject(obj), TimeSpan.FromSeconds(timeCacheSeconds), flags: CommandFlags.FireAndForget).GetAwaiter().GetResult();
                     }
 
                     this.CloseConnection();
@@ -162,7 +145,7 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
 
                     if (this._redis != null)
                     {
-                        this._redis.KeyDelete(key);
+                        this._redis.KeyDelete(key, flags: CommandFlags.FireAndForget);
                     }
 
                     this.CloseConnection();

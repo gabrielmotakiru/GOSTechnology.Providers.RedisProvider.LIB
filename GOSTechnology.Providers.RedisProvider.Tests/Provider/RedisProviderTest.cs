@@ -1,11 +1,9 @@
 ﻿using FluentAssertions;
 using GOSTechnology.Providers.RedisProvider.LIB;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Threading.Tasks;
 
 namespace GOSTechnology.Providers.RedisProvider.Tests
 {
@@ -26,9 +24,8 @@ namespace GOSTechnology.Providers.RedisProvider.Tests
         [SetUp]
         public void SetUp()
         {
-            IConfiguration configuration = InfrastructureExtension.GetConfiguration();
             Mock<ILogger<LIB.RedisProvider>> logger = new Mock<ILogger<LIB.RedisProvider>>();
-            _redisProvider = new LIB.RedisProvider(configuration, logger.Object);
+            this._redisProvider = new LIB.RedisProvider(logger.Object);
         }
 
         /// <summary>
