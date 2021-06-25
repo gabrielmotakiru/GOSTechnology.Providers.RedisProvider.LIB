@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0-preview3</Version>
+    <Version>1.0.0-preview4</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
     <Company>GOSTechnology</Company>
@@ -13,7 +13,10 @@
     <RepositoryUrl>https://github.com/gabrielmotakiru/GOSTechnology.Providers.RedisProvider.LIB</RepositoryUrl>
     <PackageProjectUrl>https://github.com/gabrielmotakiru/GOSTechnology.Providers.RedisProvider.LIB</PackageProjectUrl>
     <RepositoryType>MIT License</RepositoryType>
-    <PackageReleaseNotes>1.0.0-preview3: Version preview 3.</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.0-preview1: Deprecated version, not maintained.
+1.0.0-preview2: Deprecated version, not maintained.
+1.0.0-preview3: Deprecated version, not maintained.
+1.0.0-preview4: Last Version.</PackageReleaseNotes>
     <Copyright>MIT License</Copyright>
     <PackageTags>RedisProvider</PackageTags>
   </PropertyGroup>
@@ -27,6 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="7.0.1" />
   </ItemGroup>

@@ -11,8 +11,8 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
         /// <summary>
         /// AddRedisProvider.
         /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="typeInjection"></param>
+        /// <param name="builder">Builder service collection extension for initialize dependency injection of RedisProvider.</param>
+        /// <param name="typeInjection">Type of dependency injection of RedisProvider.</param>
         /// <returns></returns>
         public static IServiceCollection AddRedisProvider(this IServiceCollection builder, TypeInjection typeInjection = TypeInjection.SCOPED)
         {
