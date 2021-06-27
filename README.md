@@ -1,6 +1,6 @@
 # GOSTechnology.Providers.RedisProvider.LIB
 ### Redis connection management provider.
-###### *Version Note: 1.0.0-preview5.*
+###### *Version Note: 1.0.0-preview6.*
 
 [![N|Solid](https://cdn.iconscout.com/icon/free/png-256/redis-83994.png)](https://github.com/gabrielmotakiru/GOSTechnology.Providers.RedisProvider.LIB)
 
