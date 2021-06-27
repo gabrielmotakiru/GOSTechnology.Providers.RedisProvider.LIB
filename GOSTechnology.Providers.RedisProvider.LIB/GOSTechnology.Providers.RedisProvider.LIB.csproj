@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.0-preview5</Version>
+    <Version>1.0.0-preview6</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
     <Company>GOSTechnology</Company>
@@ -17,7 +17,8 @@
 1.0.0-preview2: Deprecated version, not maintained.
 1.0.0-preview3: Deprecated version, not maintained.
 1.0.0-preview4: Deprecated version, not maintained.
-1.0.0-preview5: Last Version.</PackageReleaseNotes>
+1.0.0-preview5: Deprecated version, not maintained.
+1.0.0-preview6: Last Version.</PackageReleaseNotes>
     <Copyright>MIT License</Copyright>
     <PackageTags>RedisProvider</PackageTags>
   </PropertyGroup>

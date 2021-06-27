@@ -18,6 +18,8 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
         {
             try
             {
+                builder.AddScoped<IArchitectureProvider, ArchitectureProvider>();
+
                 switch (typeInjection)
                 {
                     case TypeInjection.SINGLETON:
