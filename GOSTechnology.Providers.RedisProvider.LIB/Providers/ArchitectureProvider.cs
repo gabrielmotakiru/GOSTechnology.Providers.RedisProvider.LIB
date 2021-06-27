@@ -81,7 +81,7 @@ namespace GOSTechnology.Providers.RedisProvider.LIB
 
                 if (redisConnectionString != null && redisConnectionString.Count() == 5)
                 {
-                    Int32.TryParse(redisConnectionString.FirstOrDefault(_ => _.Contains(ConstantsRedisProvider.CONFIG_TIMECACHE)), out Int32 timeCache);
+                    Int32.TryParse(redisConnectionString.FirstOrDefault(_ => _.Contains(ConstantsRedisProvider.CONFIG_TIMECACHE)).Replace(ConstantsRedisProvider.CONFIG_TIMECACHE, String.Empty), out Int32 timeCache);
 
                     if (timeCache > 0)
                     {
